@@ -193,7 +193,7 @@ async fn init() -> Result<(), Box<dyn Error>> {
                                 config,
                                 &mut request_defaults,
                                 &mut params,
-                                &progress_bar,
+                                progress_bar,
                                 id,
                             )
                             .await
@@ -207,7 +207,7 @@ async fn init() -> Result<(), Box<dyn Error>> {
                                         if output_file.is_some() && !(config.remove_empty && val.found_params.is_empty()) {
 
                                             match output_file.as_mut().unwrap().write_all(
-                                                &strip_ansi_escapes::strip(&(output.normal().clear().to_string()+"\n").as_bytes()).unwrap()
+                                                &strip_ansi_escapes::strip((output.normal().clear().to_string()+"\n").as_bytes()).unwrap()
                                             ).await {
                                                 Ok(()) => output_file.as_mut().unwrap().flush().await.unwrap(),
                                                 Err(err) => utils::error(err, Some(url), Some(progress_bar), Some(config)),
@@ -217,7 +217,7 @@ async fn init() -> Result<(), Box<dyn Error>> {
                                         let msg = if config.verbose > 0 {
                                             format!("\n{}\n\n", output)
                                         } else {
-                                            format!("{}", output)
+                                            output.to_string()
                                         };
 
                                         if config.disable_progress_bar {
@@ -298,7 +298,7 @@ async fn run(
                         !request_defaults.parameters.contains_key(&x.name)
                             && (x.reason_kind != ReasonKind::Code || x.status == 200)
                     })
-                    .map(|x| (x.get())),
+                    .map(|x| x.get() ),
             ));
 
             utils::info(

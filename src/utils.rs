@@ -150,17 +150,17 @@ pub fn random_line(size: usize) -> String {
 
 /// returns colored id when > 1 url is being tested in the same time
 pub fn color_id(id: usize) -> String {
-    if id % 7 == 0 {
+    if id.is_multiple_of(7) {
         id.to_string().white()
-    } else if id % 6 == 0 {
+    } else if id.is_multiple_of(6) {
         id.to_string().bright_red()
-    } else if id % 5 == 0 {
+    } else if id.is_multiple_of(5) {
         id.to_string().bright_cyan()
-    } else if id % 4 == 0 {
+    } else if id.is_multiple_of(4) {
         id.to_string().bright_blue()
-    } else if id % 3 == 0 {
+    } else if id.is_multiple_of(3) {
         id.to_string().yellow()
-    } else if id % 2 == 0 {
+    } else if id.is_multiple_of(2) {
         id.to_string().bright_green()
     } else {
         id.to_string().magenta()

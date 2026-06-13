@@ -84,7 +84,7 @@ mod tests {
         .unwrap();
 
         assert!(defaults.is_json);
-        assert_eq!(defaults.body, "{\"something\":1, %s}");
-        assert_eq!(defaults.template, "\"%k\": %v");
+        assert_eq!(defaults.body, "{\"something\":1,%s}");
+        assert_eq!(defaults.template, "\"%k\":%v");
     }
 }

@@ -191,8 +191,8 @@ impl<'a> Runner<'a> {
                 }
             };
 
-            if client.is_some() {
-                if replay(
+            if client.is_some()
+                && replay(
                     self.config,
                     &self.request_defaults,
                     &client.unwrap(),
@@ -207,7 +207,6 @@ impl<'a> Runner<'a> {
                         "was unable to resend found parameters via another proxy",
                     );
                 }
-            }
         }
 
         Ok(RunnerOutput::new(
@@ -437,7 +436,7 @@ impl<'a> Runner<'a> {
             };
         }
 
-        Ok(max as isize *-1)
+        Ok(-(max as isize))
     }
 
     pub fn prepare_progress_bar(&self, sty: ProgressStyle, length: usize) {

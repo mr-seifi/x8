@@ -2,7 +2,7 @@
 name = "x8"
 version = "4.3.1-main"
 authors = ["Alexander Mironov <sh1yo@tuta.io>"]
-edition = "2018"
+edition = "2021"
 license = "GPL-3.0-or-later"
 homepage = "https://github.com/Sh1Yo/x8"
 repository = "https://github.com/Sh1Yo/x8"

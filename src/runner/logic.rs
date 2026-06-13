@@ -80,7 +80,7 @@ impl<'a> Runner<'a> {
 
                     found_params.push(FoundParameter::new(
                         reflected_parameter,
-                        &vec![],
+                        &[],
                         response.code,
                         response.text.len(),
                         kind.clone(),
@@ -174,7 +174,7 @@ impl<'a> Runner<'a> {
                 let mut found_params = shared_found_params.lock();
                 found_params.push(FoundParameter::new(
                     &params[0],
-                    &vec![format!(
+                    &[format!(
                         "{} -> {}",
                         &self.initial_response.code, response.code
                     )],

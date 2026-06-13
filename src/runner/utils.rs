@@ -371,7 +371,7 @@ pub(super) async fn _smart_verify(
             .send()
             .await?;
 
-        let (is_code_the_same, new_diffs) = response.compare(initial_response, &diffs)?;
+        let (is_code_the_same, new_diffs) = response.compare(initial_response, diffs)?;
         let mut is_the_body_the_same = true;
 
         if !new_diffs.is_empty() {

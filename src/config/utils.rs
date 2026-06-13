@@ -13,16 +13,12 @@ use super::structs::Config;
 
 /// shorcut to convert Option<&str> to Option<String> to be able to return it from the function
 pub(super) fn convert_to_string_if_some(el: Option<&str>) -> Option<String> {
-    if let Some(val) = el {
-        Some(val.to_string())
-    } else {
-        None
-    }
+    el.map(|val| val.to_string())
 }
 
 /// parse request from the request file
-pub(super) fn parse_request<'a>(
-    request: &'a str,
+pub(super) fn parse_request(
+    request: &str,
     scheme: &str,
     port: Option<u16>,
     mut data_type: Option<DataType>,
